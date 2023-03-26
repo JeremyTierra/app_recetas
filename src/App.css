@@ -1,0 +1,39 @@
+.app{
+  display: flex;
+  flex-direction: column;
+
+}
+.seccionHero{
+  background-color: var(--color4);
+  display: flex;
+  height: 200px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin:20px;
+}
+.imgSombrero{
+  margin: 30px;
+}
+h1{
+  color: white;
+-webkit-text-stroke: 1px black;
+}
+
+/* Seccion Recetas */
+
+.seccionRecetas{
+  background-color: var(--color5);
+  height: 500px;
+  border-radius: 10px;
+  border: solid 1px black;
+  overflow: scroll;
+}
+
+@media (max-height : 800px) {
+  .seccionRecetas{
+height: 400px;
+  }
+
+  
+}
