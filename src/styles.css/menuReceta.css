@@ -1,0 +1,15 @@
+.containerMenuEditar {
+    position: absolute;
+    display: flex;
+    background-color: var(--color4);
+    height: 25px;
+    width: 25px;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 50%;
+    
+}
+.material-symbols-sharp{
+font-size: 25px;
+color: rgb(149, 149, 149);
+}
