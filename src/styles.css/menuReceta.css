@@ -1,15 +1,33 @@
-.containerMenuEditar {
+.boton {
     position: absolute;
     display: flex;
     background-color: var(--color4);
     height: 25px;
     width: 25px;
-    bottom: 10px;
-    right: 10px;
     border-radius: 50%;
-    
+    right: 0px;
+    bottom: 0px;
 }
 .material-symbols-sharp{
 font-size: 25px;
 color: rgb(149, 149, 149);
+}
+.botonEliminar{
+    bottom: 35px;
+}
+.botonEditar{
+    bottom: 70px;
+}
+
+.contenedorMenuEditar{
+    bottom: 10px;
+    right: 10px;
+    position: absolute;
+width: 25px;
+height: 100px;
+overflow: hidden;
+
+}
+.oculto{
+    height: 25px;
 }

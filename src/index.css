@@ -9,6 +9,7 @@
 
 *{
   font-family: 'Alkatra', cursive;
+ transition: 500ms ease;
 }
 body{
   background-color: var(--color4);

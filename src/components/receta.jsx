@@ -8,7 +8,7 @@ function Receta({ imagen, nombreReceta }) {
              
         <img src={imagen ? imagen : imgReceta} alt="imagen de la receta" srcset="" />
         <h3>{nombreReceta ? nombreReceta : "nombre de receta"}</h3>
-        <MenuReceta></MenuReceta>
+        <MenuReceta id={1}></MenuReceta>
     </div>
 }
 
