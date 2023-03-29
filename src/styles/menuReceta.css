@@ -1,4 +1,6 @@
 .boton {
+    display: flex;
+    cursor: pointer;
     position: absolute;
     display: flex;
     background-color: var(--color4);
@@ -7,6 +9,11 @@
     border-radius: 50%;
     right: 0px;
     bottom: 0px;
+   justify-content: center;
+   align-items: center;
+}
+.boton i{
+    display: flex;
 }
 .material-symbols-sharp{
 font-size: 25px;
@@ -17,6 +24,7 @@ color: rgb(149, 149, 149);
 }
 .botonEditar{
     bottom: 70px;
+    
 }
 
 .contenedorMenuEditar{

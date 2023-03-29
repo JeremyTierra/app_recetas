@@ -1,14 +1,14 @@
 import React from "react";
-import "../styles.css/receta.css"
+import "../styles/receta.css"
 import imgReceta from "../assets/recipe.svg";
-import MenuReceta from "./menuReceta";
+import MenuReceta from "./opcionesReceta";
 
 function Receta({ imagen, nombreReceta }) {
     return <div className="containerReceta">
              
-        <img src={imagen ? imagen : imgReceta} alt="imagen de la receta" srcset="" />
+        <img src={imagen ? imagen : imgReceta} alt="imagen de la receta"  />
         <h3>{nombreReceta ? nombreReceta : "nombre de receta"}</h3>
-        <MenuReceta id={1}></MenuReceta>
+        <MenuReceta ></MenuReceta>
     </div>
 }
 

@@ -1,0 +1,21 @@
+.botonAgregar{
+position: fixed;
+    height: 40px;
+    width: 40px;
+    bottom: 20px;
+    right: 10px;
+    border-radius: 50%;
+    background-color:var(--color1);
+}
+.botonAgregar:hover{
+    background-color: white;
+}
+.botonAgregar i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 25px;
+    color: white;
+}
