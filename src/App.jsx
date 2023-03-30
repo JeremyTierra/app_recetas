@@ -1,10 +1,33 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import imgSombrero from "./assets/cocinero.png";
 import Receta from "./components/receta"
 import MenuAgregar from './components/menuAgregarReceta';
+
+
+
+
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [listaRecetas, setListaRecetas] = useState([])
+
+  useEffect(() => {
+    actualizarListaRecetas();
+  }, []);
+  async function actualizarListaRecetas() {
+    // Obtener todos los objetos de localStorage
+    const recetas = await Object.values(localStorage);
+    // Crear un componente Receta para cada objeto
+    setListaRecetas(recetas.map((receta) => {
+      const data = JSON.parse(receta);// Agregado para ver el contenido de receta en la consola
+      return (
+        <Receta key={data.id} imagen={data.image} nombreReceta={data.title} id={data.id} />
+      );
+    }));
+  }
+
+
+
 
   return (
     <div className="App">
@@ -14,15 +37,9 @@ function App() {
         <h1>Mis Recetas</h1>
       </section>
       <section className='container seccionRecetas'>
-      <Receta nombreReceta={"pollo asado"} imagen={imgSombrero}></Receta>
-      <Receta id=""></Receta>
-      <Receta></Receta>
-      <Receta></Receta>
-      <Receta></Receta>
-      <Receta></Receta>
-
+        {listaRecetas}
       </section>
-<MenuAgregar></MenuAgregar>
+      <MenuAgregar actualizarListaRecetas={actualizarListaRecetas}></MenuAgregar>
     </div>
   )
 }

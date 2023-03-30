@@ -1,7 +1,7 @@
 import React from "react";
-import "../styles/botonAgregar.css"
+import "../styles/menuAgregar.css"
 import FormReceta from "./formReceta";
-function MenuAgregar() {
+function MenuAgregar({actualizarListaRecetas}) {
   return (<>
 
     {/* boton agregar Receta */}
@@ -17,7 +17,7 @@ function MenuAgregar() {
             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div className="modal-body">
-          <FormReceta></FormReceta>
+          <FormReceta actualizarListaRecetas={actualizarListaRecetas}></FormReceta>
          
           </div>
         </div>

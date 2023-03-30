@@ -3,7 +3,7 @@ import "../styles/formReceta.css";
 import React from 'react';
 import { v4 as uuidv4 } from "uuid";
 
-const FormReceta = () => {
+const FormReceta = ({actualizarListaRecetas}) => {
   const [recipeData, setRecipeData] = useState({
     title: '',
     image: null,
@@ -16,7 +16,7 @@ const FormReceta = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 localStorage.setItem(recipeData.id,JSON.stringify(recipeData));
-
+actualizarListaRecetas();
 // borrar datos del form
 
 setRecipeData({
@@ -36,8 +36,12 @@ setRecipeData({
 
   const handleImageChange = (e) => {
     const imageFile = e.target.files[0];
-    const urlImage = URL.createObjectURL(imageFile);
-    setRecipeData({ ...recipeData, image: urlImage });
+    const reader = new FileReader();
+    reader.readAsDataURL(imageFile);
+    reader.onloadend = () => {
+    const urlImage = reader.result;
+    setRecipeData({ ...recipeData, image: urlImage });}
+
   };
 
   return (
@@ -53,7 +57,7 @@ setRecipeData({
           onChange={handleInputChange}
         />
 
-        <label htmlFor="image">Imagen:</label>
+        <label htmlFor="image">Imagen:   (opcional)</label>
         <input
           type="file"
           id="image"
