@@ -1,36 +1,40 @@
 .containerReceta {
-    position: relative;
-    padding: 20px;
-    display: flex;
-    background-color: var(--color3);
-    height: 150px;
-    width: 150px;
-    margin: 10px;
-    border-radius: 10px;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    -webkit-box-shadow: 11px 7px 22px -10px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 11px 7px 22px -10px rgba(0, 0, 0, 0.75);
-    box-shadow: 11px 7px 22px -10px rgba(0, 0, 0, 0.75);
- cursor: pointer;
+  position: relative;
+  padding: 20px;
+  display: flex;
+  background-color: var(--color3);
+  height: 150px;
+  width: 150px;
+  margin: 10px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  -webkit-box-shadow: 11px 7px 22px -10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 11px 7px 22px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 11px 7px 22px -10px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+
 }
 
 .containerReceta:hover,
 .containerReceta:focus,
 .containerReceta:active {
-    -webkit-transform: scale(1.1) rotate(4deg);
-    transform: scale(1.1) rotate(4deg);
+  -webkit-transform: scale(1.1) rotate(4deg);
+  transform: scale(1.1) rotate(4deg);
+  pointer-events: auto;
 }
 
 .containerReceta img {
-    background-size: cover;
-    height: 80px;
-    border-radius: 10px;
+  background-size: cover;
+  height: 80px;
+  border-radius: 10px;
 }
 
 .containerReceta h3 {
-    margin: 10px;
-    font-size: 16px;
-    text-align: center;
+  margin: 10px;
+  font-size: 16px;
+  text-align: center;
 }
+
+

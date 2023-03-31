@@ -5,8 +5,6 @@ import Receta from "./components/receta"
 import MenuAgregar from './components/menuAgregarReceta';
 
 
-
-
 function App() {
 
   const [listaRecetas, setListaRecetas] = useState([])
@@ -19,9 +17,9 @@ function App() {
     const recetas = await Object.values(localStorage);
     // Crear un componente Receta para cada objeto
     setListaRecetas(recetas.map((receta) => {
-      const data = JSON.parse(receta);// Agregado para ver el contenido de receta en la consola
+      const data = JSON.parse(receta);
       return (
-        <Receta key={data.id} imagen={data.image} nombreReceta={data.title} id={data.id} />
+        <Receta key={data.id}   {...data} actualizarListaRecetas={actualizarListaRecetas}/>
       );
     }));
   }

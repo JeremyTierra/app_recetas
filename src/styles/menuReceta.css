@@ -34,8 +34,15 @@ color: rgb(149, 149, 149);
 width: 25px;
 height: 100px;
 overflow: hidden;
-
 }
+
+
+.contenedorMenuEditar:hover,
+.contenedorMenuEditar:focus,
+.contenedorMenuEditar:active{
+    pointer-events: auto;
+}
+
 .oculto{
     height: 25px;
 }

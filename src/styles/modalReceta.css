@@ -1,0 +1,58 @@
+/* Estilos para el modal */
+
+.modalDatosReceta {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.902);
+    z-index: 2;
+    overflow: auto;
+    align-items: flex-start;
+  }
+  
+  .modal-contenido {
+    display: flex;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;
+    min-height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: var(--color4);
+  }
+  
+  
+  .modal-contenido h3 {
+  width: 100%;
+  text-align: center;
+    border-bottom: 3px solid white;
+  margin: 20px;
+    color: rgb(62, 62, 62);
+    -webkit-text-stroke: 0.5px rgb(153, 153, 153);
+  }
+  
+  .modal-contenido button {
+    position: fixed;
+    margin-top: 10px;
+    right: 10px;
+    bottom: 10px;
+  border: 1px solid black;
+  }
+  
+  .modal-contenido img {
+    max-width: 300px;
+    box-sizing: cover;
+    border-radius: 10px;
+  }
+  .containerReceta:hover,
+.containerReceta:focus,
+.containerReceta:active {
+  pointer-events: auto;
+}

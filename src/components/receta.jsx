@@ -1,18 +1,40 @@
-import React from "react";
-import "../styles/receta.css"
+import React, { useState } from "react";
+import "../styles/receta.css";
 import imgReceta from "../assets/recipe.svg";
 import MenuReceta from "./opcionesReceta";
-function abrirReceta(e) {
-console.log(e.target);
-}
-function Receta({ imagen, nombreReceta ,id}) {
-    return <div className="containerReceta" onClick={abrirReceta}>
-             
-        <img src={imagen ? imagen : imgReceta} alt="imagen de la receta"  />
-        <h3>{nombreReceta ? nombreReceta : "nombre de receta"}</h3>
-        <MenuReceta ></MenuReceta>
-    </div>
+import ModalReceta from "./modalReceta";
+function Receta({ image, title, id, description,
+  instructions, ingredients, actualizarListaRecetas }) {
+  const [modalAbierto, setModalAbierto] = useState(false);
 
+  function abrirReceta() {
+    setModalAbierto(true);
+  }
+
+  function cerrarReceta() {
+    setModalAbierto(false);
+  }
+
+  return (
+    <>
+      <div className="containerReceta" >
+        <div className="recetaDatos" onClick={abrirReceta}>
+          <img src={image ? image : imgReceta} alt="imagen de la receta" />
+          <h3>{title ? title : "nombre de receta"}</h3>
+        </div>
+        <MenuReceta id={id} actualizarListaRecetas={actualizarListaRecetas} title={title} image={image} description={description} ingredients={ingredients} instructions={instructions}></MenuReceta>
+
+      </div>
+      {modalAbierto && (
+
+
+
+        <ModalReceta title={title} image={image} description={description} ingredients={ingredients} instructions={instructions} cerrarReceta={cerrarReceta}></ModalReceta>
+
+
+
+      )}  </>
+  );
 }
 
 export default Receta;
