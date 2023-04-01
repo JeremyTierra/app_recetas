@@ -12,10 +12,30 @@ function MenuReceta({ id, actualizarListaRecetas, title, image, description, ing
     const [abrir, setAbrir] = useState(false);
 
     function cerrarModalEditar() {
+        const elementos = document.querySelectorAll(".containerReceta");
+
+        // Agregar o eliminar la clase "otra-clase" en cada elemento dependiendo de si está presente o no
+        elementos.forEach((elemento) => {
+            elemento.style.transition = "500ms ease";
+
+            elemento.classList.add("efectoReceta");
+
+        });
         setAbrir(false);
     }
     function abrirModalEditar() {
+        // Seleccionar todos los elementos que contienen la clase "mi-clase"
+        const elementos = document.querySelectorAll(".containerReceta");
+
+        // Agregar o eliminar la clase "otra-clase" en cada elemento dependiendo de si está presente o no
+        elementos.forEach((elemento) => {
+            elemento.style.transition = "none";
+            elemento.classList.remove("efectoReceta");
+        });
+        console.log(elementos);
         setAbrir(true);
+
+
     }
 
     return (<>
@@ -32,7 +52,7 @@ function MenuReceta({ id, actualizarListaRecetas, title, image, description, ing
         </div>
 
         {abrir && (
-            <ModalReceta title={title} image={image} description={description} ingredients={ingredients} instructions={instructions} cerrarReceta={cerrarModalEditar}></ModalReceta>
+            <ModalReceta title={title} image={image} description={description} ingredients={ingredients} instructions={instructions} cerrarReceta={cerrarModalEditar} modalTipo={"edicion"} id={id} actualizarListaRecetas={actualizarListaRecetas}></ModalReceta>
         )}
 
     </>)

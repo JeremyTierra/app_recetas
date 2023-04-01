@@ -17,9 +17,9 @@
 
 }
 
-.containerReceta:hover,
-.containerReceta:focus,
-.containerReceta:active {
+.efectoReceta:hover,
+.efectoReceta:focus,
+.efectoReceta:active {
   -webkit-transform: scale(1.1) rotate(4deg);
   transform: scale(1.1) rotate(4deg);
   pointer-events: auto;

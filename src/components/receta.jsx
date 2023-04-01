@@ -15,9 +15,12 @@ function Receta({ image, title, id, description,
     setModalAbierto(false);
   }
 
+
+
+
   return (
     <>
-      <div className="containerReceta" >
+      <div className="containerReceta efectoReceta" >
         <div className="recetaDatos" onClick={abrirReceta}>
           <img src={image ? image : imgReceta} alt="imagen de la receta" />
           <h3>{title ? title : "nombre de receta"}</h3>
@@ -29,7 +32,7 @@ function Receta({ image, title, id, description,
 
 
 
-        <ModalReceta title={title} image={image} description={description} ingredients={ingredients} instructions={instructions} cerrarReceta={cerrarReceta}></ModalReceta>
+        <ModalReceta title={title} image={image} description={description} ingredients={ingredients} instructions={instructions} cerrarReceta={cerrarReceta} modalTipo={"normal"} actualizarListaRecetas={actualizarListaRecetas}></ModalReceta>
 
 
 
