@@ -45,15 +45,17 @@ function ModalReceta({ title, image, description, ingredients, instructions, cer
       {modalNormal && (
         <div className="modalDatosReceta ">
           <div className="modal-contenido">
+          <div className="modal-contenido">
             <h3>{title ? title : "nombre de receta"}</h3>
             <img src={image ? image : imgReceta} alt="Imagen Receta" />
             <h3>Descripcion</h3>
-            <p>{description}</p>
+            <textarea readOnly  value={description}></textarea>
             <h3>Ingredientes</h3>
-            <p>{ingredients}</p>
+            <textarea readOnly value={ingredients}></textarea>
             <h3>Pasos a seguir</h3>
-            <p>{instructions}</p>
+            <textarea readOnly value={instructions}></textarea>
             <button onClick={cerrarReceta}>Cerrar</button>
+          </div>
           </div>
         </div>
       )}
@@ -61,7 +63,7 @@ function ModalReceta({ title, image, description, ingredients, instructions, cer
       {modalEdicion && (
         <div className="modalDatosReceta ">
           <div className="modal-contenido">
-            <form onSubmit={(e) => editarReceta(e)}>
+            <form  className="modal-contenido" onSubmit={(e) => editarReceta(e)}>
               <input
                 type="text"
                 value={recetaEditar.title }
@@ -75,7 +77,7 @@ function ModalReceta({ title, image, description, ingredients, instructions, cer
               />
               <input type="file" onChange={handleImageChange}/>
               <h3>Descripcion</h3>
-              <input
+              <textarea
                 type="text"
                 value={recetaEditar.description}
                 onChange={(e) => {
@@ -83,7 +85,7 @@ function ModalReceta({ title, image, description, ingredients, instructions, cer
                 }}
               />
               <h3>Ingredientes</h3>
-              <input
+              <textarea
                 type="text"
                 value={recetaEditar.ingredients}
                 onChange={(e) => {
@@ -91,7 +93,7 @@ function ModalReceta({ title, image, description, ingredients, instructions, cer
                 }}
               />
               <h3>Pasos a seguir</h3>
-              <input
+              <textarea
                 type="text"
                 value={recetaEditar.instructions}
                 onChange={(e) => {

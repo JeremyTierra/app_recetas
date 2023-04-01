@@ -41,6 +41,9 @@ h1 {
   .seccionRecetas {
     min-height: 400px;
   }
-
-
+}
+@media (max-height: 640px) {
+  .seccionRecetas {
+    min-height: 300px;
+  }
 }
