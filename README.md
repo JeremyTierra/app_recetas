@@ -24,3 +24,5 @@ Esta es una aplicación web que permite crear, editar y eliminar recetas propias
 4. Ejecuta el comando `npm run dev` para iniciar la aplicación en tu navegador
 5. Crea, edita o elimina tus propias recetas haciendo clic en los botones correspondientes en la página de la receta
 6. ¡Disfruta de la aplicación de recetas!
+
+link : https://curious-beijinho-d5edce.netlify.app/
