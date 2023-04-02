@@ -4,7 +4,7 @@ Esta es una aplicación web que permite crear, editar y eliminar recetas propias
 
 ## Características
 
-- Lista de recetas favoritas
+- Lista de recetas
 - Creación de nuevas recetas por parte de los usuarios
 - Edición de recetas existentes
 - Eliminación de recetas propias
