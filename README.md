@@ -1,2 +1,2 @@
 # app_recetas
- Aplicacion de recets
+ Aplicacion de recetas
