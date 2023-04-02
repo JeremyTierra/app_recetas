@@ -1,9 +1,16 @@
 import React, { useState } from "react";
-import "../styles/menuReceta.css"
+import "../styles/opcionesReceta.css"
 import ModalReceta from "./modalReceta";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function eliminarTarea(id) {
     localStorage.removeItem(id);
+    toast.success('Receta eliminada con éxito', {
+        position: 'top-right',
+        autoClose: 800,
 
+    });
 }
 
 
@@ -41,12 +48,25 @@ function MenuReceta({ id, actualizarListaRecetas, title, image, description, ing
     return (<>
 
         <div className="contenedorMenuEditar">
-            <div className="boton botonEliminar" onClick={() => {
+            <div className={`boton botonEliminar d${id}`} onClick={() => {
                 eliminarTarea(id)
                 actualizarListaRecetas();
             }}><i className="bi bi-trash"></i></div>
-            <div className="boton botonEditar"><i className="bi bi-pen" onClick={() => abrirModalEditar()}></i></div>
-            <span className="material-symbols-sharp boton botonMas" onClick={(e) => expandir(e)}>
+            <div className={`boton botonEditar d${id}`}><i className="bi bi-pen" onClick={() => abrirModalEditar()}></i></div>
+            <span className="material-symbols-sharp boton botonMas" onClick={() => {
+
+                const elementos = document.querySelectorAll(`.d${id}`);
+                elementos.forEach((element) => {
+                    if (element.classList.contains("botonEditar")) {
+                        element.classList.toggle("botonEditarAparecer");
+                    } else if (element.classList.contains("botonEliminar")) {
+                        element.classList.toggle("botonEliminarAparecer");
+
+                    }
+
+                });
+
+            }}>
                 add_circle
             </span>
         </div>

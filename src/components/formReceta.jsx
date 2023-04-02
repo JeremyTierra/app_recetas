@@ -2,31 +2,53 @@ import { useState } from 'react';
 import "../styles/formReceta.css";
 import React from 'react';
 import { v4 as uuidv4 } from "uuid";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const FormReceta = ({actualizarListaRecetas}) => {
+
+const FormReceta = ({ actualizarListaRecetas }) => {
+
   const [recipeData, setRecipeData] = useState({
     title: '',
     image: null,
     description: '',
     ingredients: '',
     instructions: '',
-    id:uuidv4()
+    id: uuidv4()
   });
 
+  const alertaRecetaCreada = () => {
+
+    toast.success('Receta creada', {
+      position: 'top-right',
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
-localStorage.setItem(recipeData.id,JSON.stringify(recipeData));
-actualizarListaRecetas();
-// borrar datos del form
+    try {
+      localStorage.setItem(recipeData.id, JSON.stringify(recipeData));
+      actualizarListaRecetas();
+      alertaRecetaCreada();
 
-setRecipeData({
-    title: '',
-    image: null,
-    description: '',
-    ingredients: '',
-    instructions: '',
-    id:uuidv4()
-});
+
+      // borrar datos del form
+      setRecipeData({
+        title: '',
+        image: null,
+        description: '',
+        ingredients: '',
+        instructions: '',
+        id: uuidv4()
+      });
+
+    } catch {
+      alert("No se pudo guardar la Receta")
+    }
   };
 
   const handleInputChange = (e) => {
@@ -39,8 +61,9 @@ setRecipeData({
     const reader = new FileReader();
     reader.readAsDataURL(imageFile);
     reader.onloadend = () => {
-    const urlImage = reader.result;
-    setRecipeData({ ...recipeData, image: urlImage });}
+      const urlImage = reader.result;
+      setRecipeData({ ...recipeData, image: urlImage });
+    }
 
   };
 

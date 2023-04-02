@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/menuAgregar.css"
+import "../styles/menuNuevaReceta.css"
 import FormReceta from "./formReceta";
 function MenuAgregar({actualizarListaRecetas}) {
   return (<>

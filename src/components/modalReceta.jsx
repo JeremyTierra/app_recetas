@@ -1,17 +1,37 @@
 import React, { useState, useEffect } from "react"
 import "../styles/modalReceta.css"
 import imgReceta from '../assets/recipe.svg'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function ModalReceta({ title, image, description, ingredients, instructions, cerrarReceta, modalTipo, id,actualizarListaRecetas}) {
   // Edicion de Receta
   const [recetaEditar, setRecetaEditar] = useState({});
 
   const [modalNormal, setModalNormal] = useState(false);
   const [modalEdicion, setModalEdicion] = useState(false);
+  const alertaRecetaEditada = () => {
+
+    toast.success('Receta guardada', {
+      position: 'top-right',
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  }
 
   function editarReceta(e) {
     e.preventDefault();
+    try{
     localStorage.setItem(id,JSON.stringify(recetaEditar));
     actualizarListaRecetas();
+ alertaRecetaEditada();
+  }catch{
+alert("error al guardar")
+
+    }
   }
 
   const handleImageChange = (e) => {

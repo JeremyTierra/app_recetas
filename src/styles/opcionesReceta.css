@@ -19,13 +19,7 @@
 font-size: 25px;
 color: rgb(149, 149, 149);
 }
-.botonEliminar{
-    bottom: 35px;
-}
-.botonEditar{
-    bottom: 70px;
-    
-}
+
 
 .contenedorMenuEditar{
     bottom: 10px;
@@ -45,4 +39,10 @@ overflow: hidden;
 
 .oculto{
     height: 25px;
+}
+.botonEditarAparecer{
+    bottom: 70px;
+}
+.botonEliminarAparecer{
+    bottom: 35px;
 }
