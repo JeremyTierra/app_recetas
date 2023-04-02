@@ -4,14 +4,24 @@ import imgReceta from '../assets/recipe.svg'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function ModalReceta({ title, image, description, ingredients, instructions, cerrarReceta, modalTipo, id,actualizarListaRecetas}) {
-  // Edicion de Receta
+function ModalReceta({
+  title,
+  image,
+  description,
+  ingredients,
+  instructions,
+  cerrarReceta,
+  modalTipo,
+  id,
+  actualizarListaRecetas,
+}) {
+  // Estados del componente
   const [recetaEditar, setRecetaEditar] = useState({});
-
   const [modalNormal, setModalNormal] = useState(false);
   const [modalEdicion, setModalEdicion] = useState(false);
-  const alertaRecetaEditada = () => {
 
+  // Función para mostrar una alerta cuando se edita y guarda una receta
+  const alertaRecetaEditada = () => {
     toast.success('Receta guardada', {
       position: 'top-right',
       autoClose: 1000,
@@ -20,44 +30,42 @@ function ModalReceta({ title, image, description, ingredients, instructions, cer
       pauseOnHover: true,
       draggable: true,
     });
-  }
+  };
 
+  // Función para guardar la receta editada en localStorage
   function editarReceta(e) {
     e.preventDefault();
-    try{
-    localStorage.setItem(id,JSON.stringify(recetaEditar));
-    actualizarListaRecetas();
- alertaRecetaEditada();
-  }catch{
-alert("error al guardar")
-
+    try {
+      localStorage.setItem(id, JSON.stringify(recetaEditar));
+      actualizarListaRecetas();
+      alertaRecetaEditada();
+    } catch {
+      alert('Error al guardar');
     }
   }
 
+  // Función para manejar el cambio de imagen al seleccionar un archivo
   const handleImageChange = (e) => {
     const imageFile = e.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(imageFile);
     reader.onloadend = () => {
-    const urlImage = reader.result;
-    setRecetaEditar({ ...recetaEditar, image: urlImage });}
-
+      const urlImage = reader.result;
+      setRecetaEditar({ ...recetaEditar, image: urlImage });
+    };
   };
 
-
+  // useEffect para obtener los datos de la receta a editadar de localStorage
   useEffect(() => {
     const data = localStorage.getItem(id);
     setRecetaEditar(JSON.parse(data));
 
-    if (modalTipo == "edicion") {
+    // Mostrar el modal de edición o normal según la prop modalTipo
+    if (modalTipo === 'edicion') {
       setModalEdicion(true);
-      console.log(recetaEditar);
-    }
-    else if (modalTipo == "normal") {
+    } else if (modalTipo === 'normal') {
       setModalNormal(true);
     }
-
-    console.log("El componente se ha montado");
   }, []);
 
   return (

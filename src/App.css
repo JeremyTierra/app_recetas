@@ -1,17 +1,19 @@
+/* Estilos generales */
+
 .app {
   display: flex;
   flex-direction: column;
-
 }
 
 /* Seccion Hero */
+
 .seccionHero {
-  background-color: var(--color4);
   display: flex;
-  height: 200px;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  background-color: var(--color4);
+  height: 200px;
   margin: 20px;
 }
 
@@ -28,13 +30,14 @@ h1 {
 
 .seccionRecetas {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   background-color: var(--color5);
   min-height: 500px;
-  border-radius: 10px;
-  border: solid 1px black;
-  justify-content: center;
-  flex-wrap: wrap;
   padding: 10px;
+  border: solid 1px black;
+  border-radius: 10px;
 }
 
 @media (max-height : 800px) {
@@ -42,6 +45,7 @@ h1 {
     min-height: 400px;
   }
 }
+
 @media (max-height: 640px) {
   .seccionRecetas {
     min-height: 300px;

@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import "../styles/formReceta.css";
 import React from 'react';
 import { v4 as uuidv4 } from "uuid";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import "../styles/formReceta.css";
 
 const FormReceta = ({ actualizarListaRecetas }) => {
-
+  // Estado inicial de la receta, con valores por defecto y un ID generado automáticamente
   const [recipeData, setRecipeData] = useState({
     title: '',
     image: null,
@@ -17,8 +16,8 @@ const FormReceta = ({ actualizarListaRecetas }) => {
     id: uuidv4()
   });
 
+  // Función para mostrar una alerta de receta creada
   const alertaRecetaCreada = () => {
-
     toast.success('Receta creada', {
       position: 'top-right',
       autoClose: 1000,
@@ -28,15 +27,16 @@ const FormReceta = ({ actualizarListaRecetas }) => {
       draggable: true,
     });
   }
+
+  // Función para manejar el envío del formulario
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
+      // Guardar la receta en el almacenamiento local del navegador
       localStorage.setItem(recipeData.id, JSON.stringify(recipeData));
       actualizarListaRecetas();
       alertaRecetaCreada();
-
-
-      // borrar datos del form
+      // Reiniciar los datos del formulario
       setRecipeData({
         title: '',
         image: null,
@@ -51,11 +51,13 @@ const FormReceta = ({ actualizarListaRecetas }) => {
     }
   };
 
+  // Función para manejar los cambios en los campos del formulario
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setRecipeData({ ...recipeData, [name]: value });
   };
 
+  // Función para manejar los cambios en el campo de imagen
   const handleImageChange = (e) => {
     const imageFile = e.target.files[0];
     const reader = new FileReader();
@@ -64,8 +66,8 @@ const FormReceta = ({ actualizarListaRecetas }) => {
       const urlImage = reader.result;
       setRecipeData({ ...recipeData, image: urlImage });
     }
-
   };
+
 
   return (
     <div className="container">

@@ -4,46 +4,34 @@ import ModalReceta from "./modalReceta";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function eliminarTarea(id) {
-    localStorage.removeItem(id);
-    toast.success('Receta eliminada con éxito', {
-        position: 'top-right',
-        autoClose: 800,
-
-    });
-}
-
-
-
 function MenuReceta({ id, actualizarListaRecetas, title, image, description, ingredients, instructions }) {
-    const [abrir, setAbrir] = useState(false);
-
-    function cerrarModalEditar() {
-        const elementos = document.querySelectorAll(".containerReceta");
-
-        // Agregar o eliminar la clase "otra-clase" en cada elemento dependiendo de si está presente o no
-        elementos.forEach((elemento) => {
-            elemento.style.transition = "500ms ease";
-
-            elemento.classList.add("efectoReceta");
-
-        });
-        setAbrir(false);
-    }
     function abrirModalEditar() {
-        // Seleccionar todos los elementos que contienen la clase "mi-clase"
         const elementos = document.querySelectorAll(".containerReceta");
-
-        // Agregar o eliminar la clase "otra-clase" en cada elemento dependiendo de si está presente o no
         elementos.forEach((elemento) => {
             elemento.style.transition = "none";
             elemento.classList.remove("efectoReceta");
         });
-        console.log(elementos);
         setAbrir(true);
-
-
     }
+
+    function cerrarModalEditar() {
+        const elementos = document.querySelectorAll(".containerReceta");
+        elementos.forEach((elemento) => {
+            elemento.style.transition = "500ms ease";
+            elemento.classList.add("efectoReceta");
+        });
+        setAbrir(false);
+    }
+
+    function eliminarTarea(id) {
+        localStorage.removeItem(id);
+        toast.success('Receta eliminada con éxito', {
+            position: 'top-right',
+            autoClose: 800,
+        });
+    }
+
+    const [abrir, setAbrir] = useState(false);
 
     return (<>
 

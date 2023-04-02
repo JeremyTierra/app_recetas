@@ -1,18 +1,24 @@
-import { useState, useEffect } from 'react'
-import './App.css'
+// Importar los módulos necesarios
+import { useState, useEffect } from 'react';
+import './App.css';
 import imgSombrero from "./assets/cocinero.png";
-import Receta from "./components/receta"
+import Receta from "./components/receta";
 import MenuAgregar from './components/menuNuevaReceta';
 import Cookies from 'js-cookie';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+// Definir el componente App
 function App() {
+  // Definir el estado listaRecetas y su función para actualizarlo
+  const [listaRecetas, setListaRecetas] = useState([]);
 
-  const [listaRecetas, setListaRecetas] = useState([])
-
+  // Definir el efecto para inicializar la lista de recetas y las cookies
   useEffect(() => {
+    // Obtener el valor de la cookie 
     const hasVisited = Cookies.get('hasVisited');
+
+    // Si la cookie no existe, añadir una receta por defecto a localStorage y crear la cookie
     if (!hasVisited) {
       localStorage.setItem('06b36af0-bae1-41d8-a29a-fcab74fec08c', JSON.stringify({
         "title": "Tarta de Manzana",
@@ -21,43 +27,44 @@ function App() {
         "ingredients": "- 1 kg de manzanas\n-  200 g de harina\n- 150 g de azúcar\n- 100 g de mantequilla\n- 3 huevos\n- 1 sobre de levadura en polvo\n- 1 pizca de sal",
         "instructions": "1)- Pela y corta las manzanas en rodajas finas.\n2)- En un bol, mezcla la harina, el azúcar, la levadura en polvo y la sal.\n3)- Añade la mantequilla y mezcla con los dedos hasta que quede una mezcla arenosa.\n4)- Agrega los huevos y mezcla bien.\n5)- Añade las manzanas y mezcla todo hasta que las manzanas estén bien cubiertas.\n6)- Vierte la mezcla en un molde para tarta y hornea durante 45 minutos a 180 grados Celsius.\n7)- Una vez horneada, deja enfriar la tarta antes de servir.\n  \n¡Disfruta de esta deliciosa tarta de manzana!",
         "id": "06b36af0-bae1-41d8-a29a-fcab74fec08c"
-    }));
+      }));
       Cookies.set('hasVisited', true);
     }
-  
+
+    // Actualizar la lista de recetas
     actualizarListaRecetas();
   }, []);
+
+  // Función para actualizar la lista de recetas
   async function actualizarListaRecetas() {
-
-
-
     // Obtener todos los objetos de localStorage
     const recetas = await Object.values(localStorage);
-    // Crear un componente Receta para cada objeto
+
+    // Crear un componente Receta para cada objeto y añadirlo a la lista
     setListaRecetas(recetas.map((receta) => {
       const data = JSON.parse(receta);
       return (
-        <Receta key={data.id}   {...data} actualizarListaRecetas={actualizarListaRecetas} />
+        <Receta key={data.id} {...data} actualizarListaRecetas={actualizarListaRecetas} />
       );
     }));
   }
 
 
-
-
   return (
     <div className="App">
- <ToastContainer position="top-right" autoClose={1000} />
+      {/* Mostrar el ToastContainer */}
+      <ToastContainer position="top-right" autoClose={1000} />
       <section className='seccionHero'>
         <img className="imgSombrero" src={imgSombrero} alt="sombrero chef" />
         <h1>Mis Recetas</h1>
       </section>
       <section className='container seccionRecetas'>
+        {/* Mostrar la lista de recetas */}
         {listaRecetas}
       </section>
+      {/* Menú boton para agregar una nueva receta */}
       <MenuAgregar actualizarListaRecetas={actualizarListaRecetas}></MenuAgregar>
     </div>
-  )
+  );
 }
-
-export default App
+export default App;

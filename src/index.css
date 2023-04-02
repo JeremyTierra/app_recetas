@@ -1,18 +1,18 @@
-:root{
-  --color1 : #d67288;
-  --color2 : #db9a7c;
-  --color3 : #dfca98;
-  --color4 : #eaead1;
-  --color5 : #f3f3f3;
+:root {
+  --color1: #d67288;
+  --color2: #db9a7c;
+  --color3: #dfca98;
+  --color4: #eaead1;
+  --color5: #f3f3f3;
   background-color: var(--color4);
 }
 
-*{
+* {
   font-family: 'Alkatra', cursive;
- transition: 500ms ease;
+  transition: 500ms ease;
 }
-body{
+
+body {
   background-color: var(--color4);
 
 }
-
